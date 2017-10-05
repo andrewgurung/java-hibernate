@@ -14,6 +14,7 @@ URL: http://www.andrewgurung.com/
   - Object Relational Mapping (ORM) tool
 - Hibernate has its own query language known as HQL
 - Java Developers can use Java objects instead of dealing with SQL tables
+  - Database changes only requires XML changes
 -----------
 
 ## Hibernate Example
