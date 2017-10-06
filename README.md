@@ -16,6 +16,9 @@ URL: http://www.andrewgurung.com/
 - Java Developers can use Java objects instead of dealing with SQL tables
   - Database changes only requires XML changes
 - Download URL: http://hibernate.org/orm/releases/
+  - Download the latest Hibernate stable release zip file
+  - Unzip the file
+  - The required Hibernate files are inside `hibernate-release-xxx.Final\lib\required`
 -----------
 
 ## Hibernate Example
