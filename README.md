@@ -15,6 +15,7 @@ URL: http://www.andrewgurung.com/
 - Hibernate has its own query language known as HQL
 - Java Developers can use Java objects instead of dealing with SQL tables
   - Database changes only requires XML changes
+- Download URL: http://hibernate.org/orm/releases/
 -----------
 
 ## Hibernate Example
