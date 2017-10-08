@@ -22,6 +22,24 @@ URL: http://www.andrewgurung.com/
 - Netbeans
   - Check if Hibernate plugin is installed
   - Tools -> Plugins
+- MySQL for OSX
+  - Run `mysql-5.7.19-macos10.12-x86_64.dmg`
+  - Open MySQL Preference Pane from System Preferences to start and stop MySQL
+  - Add aliases to commonly used programs like mysql and mysqladmin
+  ```
+  alias mysql=/usr/local/mysql/bin/mysql
+  alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+  ```
+  - Easier way to invoke mysql command is to add `/usr/local/mysql/bin/` to Path
+  ```
+  PATH=${PATH}:/usr/local/mysql/bin
+  ```
+  - Check MySQL version
+  ```
+  mysql --version
+  ```
+  - Connect MySQL to Netbeans
+    - Tools -> Database -> Configure MySQL connection
 -----------
 
 ## Hibernate Example
