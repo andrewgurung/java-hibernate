@@ -19,6 +19,9 @@ URL: http://www.andrewgurung.com/
   - Download the latest Hibernate stable release zip file
   - Unzip the file
   - The required Hibernate files are inside `hibernate-release-xxx.Final\lib\required`
+- Netbeans
+  - Check if Hibernate plugin is installed
+  - Tools -> Plugins
 -----------
 
 ## Hibernate Example
