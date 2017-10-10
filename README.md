@@ -43,11 +43,24 @@ URL: http://www.andrewgurung.com/
   mysql -u root -p -h 127.0.0.1 -P 3306
   SET PASSWORD = PASSWORD('password');
   ```
+- Adding Hibernate library to your eclipse project
+  [Tutorial Link](https://kaanmutlu.wordpress.com/2011/07/30/hibernate-installationsetup-on-eclipse-ide/)
 -----------
 
 ## Hibernate Example
 
 ### Hibernate Configuration file
+- Filename: hibernate.cfg.xml
+- Define required database properties
+- To create 'hibernate.cfg.xml' file in Eclipse, install JBoss Hibernate Tool for wizard support
+  - Connection URL: `jdbc:mysql://localhost:3306/messagerepository`
+  - Driver class: com.mysql.jdbc.Driver
+  - Set Username and Password
+- Additional hibernate properties from the Hibernate GUI page (provided by JBoss Hibernate tool)
+  - Dialect: org.hibernate.dialect.MySQLDialect
+  - Show SQL: true
+  - hibernate.current_session_context_class: thread
+  - hibernate.query.factory_class: `org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory`
 
 ### Reverse engineering
 
