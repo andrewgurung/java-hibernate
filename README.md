@@ -38,11 +38,23 @@ URL: http://www.andrewgurung.com/
   ```
   mysql --version
   ```
-  - Connect MySQL to Netbeans
-    - Tools -> Database -> Configure MySQL connection
+  - IMPORTANT: Change password
+  ```
+  mysql -u root -p -h 127.0.0.1 -P 3306
+  SET PASSWORD = PASSWORD('password');
+  ```
 -----------
 
 ## Hibernate Example
+
+### Hibernate Configuration file
+
+### Reverse engineering
+
+### Hibernate mapping file
+
+### Plain old Java object
+
 -----------
 
 ## CRUD Operations
