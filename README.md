@@ -128,6 +128,36 @@ Message.java (POJO)
 - Getters and Setters
 -----------
 
+## Java Application
+- Define factory and registry
+```
+private static SessionFactory factory;
+private static ServiceRegistry registry;
+```
+
+- Setup configuration object
+```
+Configuration conf = new Configuration().configure();
+```
+
+- Establish registry
+```
+registry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
+```
+
+- Instantiate factory object
+```
+factory = conf.buildSessionFactory(registry);
+```
+
+- Open session
+```
+Session session = factory.openSession();
+```
+
+
+-----------
+
 ## CRUD Operations
 -----------
 
