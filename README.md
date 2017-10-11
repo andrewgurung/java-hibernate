@@ -49,6 +49,20 @@ URL: http://www.andrewgurung.com/
 
 ## Hibernate Example
 
+### Eclipse Plugin: Hibernate tool
+  - Hibernate Tools built by JBoss
+  - Change Show Perspective -> Hibernate
+
+  1. Run Hibernate Console Configuration
+  2. Select Configuration File
+    - Run new Hibernate Configuration File
+  3. Run Hibernate Reverse Engineering Configuration
+  4. Create Hibernate Code Generation Configuration
+
+### Hibernate Console Configuration
+- Right click project -> New -> Hibernate -> Create Hibernate Console Configuration
+- Configuration File: Click setup -> Create new -> hibernate.cfg.xml
+
 ### Hibernate Configuration file
 - Filename: hibernate.cfg.xml
 - Define required database properties
@@ -64,10 +78,12 @@ URL: http://www.andrewgurung.com/
 
 ### Reverse engineering
 - Process of taking database tables and generating mapping files and POJO files
+- Right click project -> Create hibernate reverse engineering file
+- Filename: hibernate.reveng.xml
+- Select table used for reverse engineering
 - <schema-selection>: Identifies schema
 - <table-filter>: Identifies tables to reverse engineer
 - <type-mapping>: Convert types
-- Starting point
 ```
 <hibernate-reverse-engineering>
 	<schema-selection match-catalog="databasename" />
@@ -75,10 +91,41 @@ URL: http://www.andrewgurung.com/
 </hibernate-reverse-engineering>
 ```
 
-### Hibernate mapping file
+### Hibernate mapping file and POJOs
+- Depends on `hibernate.reveng.xml` to generate mapping `*.hbm.xml` and POJO files
+- Click on the tiny hibernate specific run icon in the toolbar to select 'Hibernate Code Generation Configuration' (Similar to Run As.. icon)
+- Choose console configuration and reveng.xml files
+- Package: helloworldexample
+- In the Exporters tab, check the following
+  - Use Java 5 syntax
+  - Domain code (.java)
+  - Hibernate XML Mappings (.hbm.xml)
+- Run
+- Then add the following line in hibernate.cfg.xml
+  ```
+  <mapping resource="helloworldexample/Message.hbm.xml"/>
+  ```
 
-### Plain old Java object
+#### Generated mapping and POJO files
+Message.hbm.xml
+```
+<hibernate-mapping ...>
+    <class catalog="messagerepository" name="helloworldexample.Message" table="message" ...>
+        <id name="id" type="java.lang.Short">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="message" type="string">
+            <column length="50" name="message"/>
+        </property>
+    </class>
+</hibernate-mapping>
+```
 
+Message.java (POJO)
+- Default constructor
+- private variables for columns
+- Getters and Setters
 -----------
 
 ## CRUD Operations
