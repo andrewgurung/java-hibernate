@@ -63,6 +63,17 @@ URL: http://www.andrewgurung.com/
   - hibernate.query.factory_class: `org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory`
 
 ### Reverse engineering
+- Process of taking database tables and generating mapping files and POJO files
+- <schema-selection>: Identifies schema
+- <table-filter>: Identifies tables to reverse engineer
+- <type-mapping>: Convert types
+- Starting point
+```
+<hibernate-reverse-engineering>
+	<schema-selection match-catalog="databasename" />
+	<table-filter match-name="tablename" />
+</hibernate-reverse-engineering>
+```
 
 ### Hibernate mapping file
 
