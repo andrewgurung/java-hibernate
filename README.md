@@ -43,11 +43,30 @@ URL: http://www.andrewgurung.com/
   mysql -u root -p -h 127.0.0.1 -P 3306
   SET PASSWORD = PASSWORD('password');
   ```
-- Adding Hibernate library to your eclipse project
-  [Tutorial Link](https://kaanmutlu.wordpress.com/2011/07/30/hibernate-installationsetup-on-eclipse-ide/)
+- Option 1: Adding Hibernate library to your eclipse project
+  - [Tutorial Link](https://kaanmutlu.wordpress.com/2011/07/30/hibernate-installationsetup-on-eclipse-ide/)
+  - Also add MySQL Connector jar file
+- Option 2: Adding Hibernate through Maven
+```
+<dependencies>
+  <!-- MySQL connector -->
+  <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>6.0.5</version>
+  </dependency>
+  <!-- Hibernate 5.2.6 Final -->
+  <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.2.6.Final</version>
+  </dependency>
+</dependencies>
+```
 -----------
 
 ## Hibernate Example
+- [Source Code](hibernate-tutorial)
 
 ### Eclipse Plugin: Hibernate tool
   - Hibernate Tools built by JBoss
@@ -75,6 +94,7 @@ URL: http://www.andrewgurung.com/
   - Show SQL: true
   - hibernate.current_session_context_class: thread
   - hibernate.query.factory_class: `org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory`
+  - Note: MySQL 5.7.19: `jdbc:mysql://localhost:3306/messagerepository`?useSSL=false&amp;serverTimezone=UTC`
 
 ### Reverse engineering
 - Process of taking database tables and generating mapping files and POJO files
