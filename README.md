@@ -155,7 +155,35 @@ factory = conf.buildSessionFactory(registry);
 Session session = factory.openSession();
 ```
 
+- Create transaction object
+```
+Transaction tx = null;
+tx = session.beginTransaction();
+```
 
+- Persisting into database through POJOs
+```
+Message msg = new Message(m);
+msgId = (Short) session.save(msg);
+```
+
+- Retrieving from database
+```
+List messages = session.createQuery("From Message").list();
+for(Iterator iterator = messages.iterator(); iterator.hasNext(); ) {
+	Message message = (Message) iterator.next();
+	System.out.println("Message: " + message.getMessage());
+}
+```
+
+- Finally commit transaction, close session and registry
+```
+tx.commit();
+
+session.close();
+
+StandardServiceRegistryBuilder.destroy(registry);
+```
 -----------
 
 ## CRUD Operations
