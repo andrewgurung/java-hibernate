@@ -261,6 +261,7 @@ Sample hbm.xml
 -----------
 
 ## CRUD Operations
+- [Source Code](HibernateCrud)
 
 ### Sample Project
 - Employee: id(primary key), first_Name, last_Name, salary
@@ -268,10 +269,71 @@ Sample hbm.xml
 - New rows are added, updated or deleted to database through Java objects/instances
 
 ### Add objects
+- Both class mapping can be merged in a single hbm.xml file
+Mapping: one-to-many
+```
+...
+<class name="hibernateexample.Employee" table="employee" catalog="hibernateexample" optimistic-lock="version">
+  ...
+  <set name="phones" cascade="all">
+     <key column="employee_id"/>
+     <one-to-many class="hibernateexample.Phone"/>
+  </set>
+</class>
+
+<class name="hibernateexample.Phone" table="phone" catalog="hibernateexample" optimistic-lock="version">
+    <id name="id" type="int" column="id">
+       <generator class="native" />
+    </id>
+    <property name="phoneNumber" type="string">
+        <column name="phone_number" length="12" />
+    </property>
+</class>
+```
+
+Java application
+```
+HashSet hs = new HashSet();
+hs.add(new Phone(cell));
+hs.add(new Phone(hPhone));
+Session session = factory.openSession();
+Transaction tx = null;
+Integer employeeID = null;
+try{
+   tx = session.beginTransaction();
+   Employee employee = new Employee(fname, lname, salary);
+   employee.setPhones(hs);
+   employeeID = (Integer) session.save(employee);
+   tx.commit();
+}catch (HibernateException e) {
+   if (tx!=null) tx.rollback();
+   e.printStackTrace();
+}finally {
+   session.close();
+}
+```
 
 ### Update objects
+```
+public void updateEmployee(Integer EmployeeID, int salary ){
+  ...
+  tx = session.beginTransaction();
+  Employee employee = (Employee)session.get(Employee.class, EmployeeID);
+  employee.setSalary( salary );
+  session.update(employee);
+  tx.commit();
+}
+```
 
 ### Delete objects
+public void deleteEmployee(Integer EmployeeID){
+  ...   
+  tx = session.beginTransaction();
+  Employee employee =
+            (Employee)session.get(Employee.class, EmployeeID);
+  session.delete(employee);
+  tx.commit();
+}
 -----------
 
 ## Searches and Queries
