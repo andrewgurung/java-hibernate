@@ -81,6 +81,7 @@ URL: http://www.andrewgurung.com/
 ### Hibernate Console Configuration
 - Right click project -> New -> Hibernate -> Create Hibernate Console Configuration
 - Configuration File: Click setup -> Create new -> hibernate.cfg.xml
+-
 
 ### Hibernate Configuration file
 - Filename: hibernate.cfg.xml
@@ -94,7 +95,8 @@ URL: http://www.andrewgurung.com/
   - Show SQL: true
   - hibernate.current_session_context_class: thread
   - hibernate.query.factory_class: `org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory`
-  - Note: MySQL 5.7.19: `jdbc:mysql://localhost:3306/messagerepository`?useSSL=false&amp;serverTimezone=UTC`
+  - Note: MySQL 5.7.19: `jdbc:mysql://localhost:3306/hibernateexample`
+  - Append these extra params to fix db connection errors and support Reverse Engineering Tool `?useSSL=false&amp;serverTimezone=UTC&amp;nullNamePatternMatchesAll=true`
 
 ### Reverse engineering
 - Process of taking database tables and generating mapping files and POJO files
