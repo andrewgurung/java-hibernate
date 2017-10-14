@@ -151,28 +151,31 @@ Message.java (POJO)
 ## Java Application
 - Define factory and registry
 ```
-private static SessionFactory factory;
-private static ServiceRegistry registry;
-```
-
-- Setup configuration object
-```
-Configuration conf = new Configuration().configure();
+private static SessionFactory sessionFactory;
+private static StandardServiceRegistry registry;
 ```
 
 - Establish registry
 ```
-registry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
+registry = new StandardServiceRegistryBuilder()
+            .configure()
+            .build();
+```
+
+- Create Metadata
+```
+MetadataSources sources = new MetadataSources(registry);
+Metadata metadata = sources.getMetadataBuilder().build();
 ```
 
 - Instantiate factory object
 ```
-factory = conf.buildSessionFactory(registry);
+sessionFactory = metadata.getSessionFactoryBuilder().build();
 ```
 
 - Open session
 ```
-Session session = factory.openSession();
+Session session = sessionFactory.openSession();
 ```
 
 - Create transaction object
