@@ -209,6 +209,41 @@ StandardServiceRegistryBuilder.destroy(registry);
 ```
 -----------
 
+## Terminologies
+### Data Persistence
+- Only Java objects with variables can be stored
+- Objects can be in 3 states of persistence
+  1. Transient State:
+    - Exist in memory. Database has no knowledge of object
+    - Must ask session to save it
+  2. Persistent State:
+    - Saved objects that exists in database
+  3. Detached State:
+    - Object exists in database but connection is lost
+    - Eg: Session maybe closed
+
+### Session Factory
+- Each application should have one `SessionFactory` instance
+- `SessionFactory` is created during startup and is thread safe
+- Separate `SessionFactory` object is required for multiple database connection
+
+### Session
+- Only open session when needed and destroy it immediately as it isn't thread safe
+- Session objects wraps underlying JDBC resource making it easy to connect
+- Methods include: save, persist, create, read, openSession
+
+### Transaction
+- Single unit of work
+- Can be started, committed or rolled back
+- Handled by transaction manager
+
+### Mapping Strategy
+- Class refers to tables. Class must be POJO with getters, setters and default constructor
+- Instance of a class refers to a row
+- Properties of a class refers to columns
+
+-----------
+
 ## CRUD Operations
 -----------
 
