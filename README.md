@@ -241,6 +241,20 @@ StandardServiceRegistryBuilder.destroy(registry);
 - Class refers to tables. Class must be POJO with getters, setters and default constructor
 - Instance of a class refers to a row
 - Properties of a class refers to columns
+- Hibernate uses configuration file for mapping data
+- Filename: 'className'.hbm.xml
+
+Options to identify mapping:
+1. Configuration XML file
+2. Annotations (after Java 5)
+
+Sample hbm.xml
+- Root: <hibernate-mapping>
+- All class elements are included in root element
+- Both class and table name are included
+- <id>: element maps the unique ID attribute
+- <generator>: Used to auto-generate primary keys
+- <property>: Used to map class property to a column
 
 -----------
 
