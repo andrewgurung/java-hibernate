@@ -259,7 +259,24 @@ Sample hbm.xml
 -----------
 
 ## CRUD Operations
+
+### Add objects
+
+### Update objects
+
+### Delete objects
 -----------
 
 ## Searches and Queries
+
+### Hibernate Query language (HQL)
+
+### Select clause
+
+### Named parameters
+
+### Aggregate methods
+
+### Criteria query API
+
 -----------
