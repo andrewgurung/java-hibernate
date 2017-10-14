@@ -260,6 +260,11 @@ Sample hbm.xml
 
 ## CRUD Operations
 
+### Sample Project
+- Employee: id(primary key), first_Name, last_Name, salary
+- Phone: id(primary key), phone_Number, employee_id (foreign key)
+- New rows are added, updated or deleted to database through Java objects/instances
+
 ### Add objects
 
 ### Update objects
