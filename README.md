@@ -339,10 +339,34 @@ public void deleteEmployee(Integer EmployeeID){
 ## Searches and Queries
 
 ### Hibernate Query language (HQL)
+- HQL is an alternative to SQL
+- Queries are translated into conventional SQL queries
+- Avoids portability hassles
+```
+FROM Employee as e
+```
 
 ### Select clause
+- 3 ways to retrieve objects from database
+  - criteria query API
+  - HQL, and
+  - native SQL queries
+```
+Query query = session.createQuery("from Employee");
+List employees = query.list();
+
+Query query = session.createQuery("select e.firstName from Employee as e");
+
+Query query = session.createQuery("from Employee as e where e.firstName like 'S%' and salary > 100000");
+```
 
 ### Named parameters
+- Allows us to use user input in our query with limited risk of malicious intent from user
+```
+String hql = "from Employee where salary > :salary";
+Query query = session.createQuery(hql);
+query.setInteger("salary", 10000);
+```
 
 ### Aggregate methods
 
