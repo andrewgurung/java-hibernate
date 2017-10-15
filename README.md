@@ -366,10 +366,24 @@ Query query = session.createQuery("from Employee as e where e.firstName like 'S%
 String hql = "from Employee where salary > :salary";
 Query query = session.createQuery(hql);
 query.setInteger("salary", 10000);
+List employees = query.list()
 ```
 
 ### Aggregate methods
+- Max, count, distinct, sum etc
+```
+String hql = "select max(e.salary) from Employee as e";
+Query query = session.createQuery(hql);
+int s = (int)query.uniqueResult();
+```
 
 ### Criteria query API
-
+- Criteria is used to restrict query results
+- Criteria can be concatenated to include restrictions, order etc
+```
+Criteria criteria = session.createCriteria(Employee.class);
+criteria.add(Restrictions.gt("salary", 10000));
+criteria.addOrder(Order.asc("firstName"));
+List employees = criteria.list();
+```
 -----------
